@@ -14,4 +14,4 @@ from
 	inner join m_work_type wt
 	on w.work_type = wt.work_type
 where
-	d.director_id = /*[# mb:p="directorId"]*/ 'D0000001' /*[/]*/;
+	d.director_id = /*[# mb:p="directorId"]*/ 'D0000002' /*[/]*/;
