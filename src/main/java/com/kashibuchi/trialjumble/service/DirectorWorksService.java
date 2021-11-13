@@ -1,0 +1,52 @@
+package com.kashibuchi.trialjumble.service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+
+import com.kashibuchi.trialjumble.persistence.domain.DirectorWork;
+import com.kashibuchi.trialjumble.persistence.mapper.DirectorWorkMapper;
+import com.kashibuchi.trialjumble.web.model.DirectorWorks;
+import com.kashibuchi.trialjumble.web.model.DirectorWorks.DirectorWorksBuilder;
+import com.kashibuchi.trialjumble.web.model.DirectorWorks.Work;
+import com.kashibuchi.trialjumble.web.model.DirectorWorks.Work.WorkBuilder;
+
+import lombok.AllArgsConstructor;
+
+@Service
+@AllArgsConstructor
+public class DirectorWorksService {
+
+	private DirectorWorkMapper directorWorkMapper;
+
+	public DirectorWorks getDirectorWorksDetail(String directorId) {
+
+		List<DirectorWork> workDetails = directorWorkMapper.getWorkDetails(directorId);
+
+		DirectorWorksBuilder builder = DirectorWorks.builder();
+
+		Optional<DirectorWork> parsonalData = workDetails.stream().findFirst();
+		parsonalData.ifPresent(
+				data -> builder.name(data.getName()).birthDate(data.getBirthDate()).overview(data.getOverview()));
+
+		ArrayList<Work> works = new ArrayList<DirectorWorks.Work>();
+		for (DirectorWork directorWork : workDetails) {
+
+			System.out.println("directorWork.toString(): " + directorWork.toString());
+
+			WorkBuilder workBuilder = DirectorWorks.Work.builder();
+			workBuilder.workName(directorWork.getWorkName())
+					.workTypeJa(directorWork.getWorkTypeJa())
+					.yearOfRelease(directorWork.getYearOfRelease())
+					.position(directorWork.getPosition())
+					.memo(directorWork.getMemo());
+			works.add(workBuilder.build());
+		}
+
+		builder.works(works);
+
+		return builder.build();
+	}
+}
