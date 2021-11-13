@@ -28,8 +28,9 @@ public class DirectorWorksService {
 		DirectorWorksBuilder builder = DirectorWorks.builder();
 
 		Optional<DirectorWork> parsonalData = workDetails.stream().findFirst();
-		parsonalData.ifPresent(
-				data -> builder.name(data.getName()).birthDate(data.getBirthDate()).overview(data.getOverview()));
+		parsonalData.ifPresentOrElse(
+				data -> builder.name(data.getName()).birthDate(data.getBirthDate()).overview(data.getOverview())
+				,() -> builder.name("").birthDate("").overview(""));
 
 		ArrayList<Work> works = new ArrayList<DirectorWorks.Work>();
 		for (DirectorWork directorWork : workDetails) {
