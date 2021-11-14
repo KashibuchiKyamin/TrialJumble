@@ -35,8 +35,6 @@ public class DirectorWorksService {
 		ArrayList<Work> works = new ArrayList<DirectorWorks.Work>();
 		for (DirectorWork directorWork : workDetails) {
 
-			System.out.println("directorWork.toString(): " + directorWork.toString());
-
 			WorkBuilder workBuilder = DirectorWorks.Work.builder();
 			workBuilder.workName(directorWork.getWorkName())
 					.workTypeJa(directorWork.getWorkTypeJa())
