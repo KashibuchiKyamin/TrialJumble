@@ -8,11 +8,15 @@ import org.apache.ibatis.annotations.SelectProvider;
 import org.mybatis.scripting.thymeleaf.support.TemplateFilePathProvider;
 import org.springframework.stereotype.Repository;
 
+import com.kashibuchi.trialjumble.persistence.domain.Director;
 import com.kashibuchi.trialjumble.persistence.domain.DirectorWork;
 
 @Repository
 @Mapper
 public interface DirectorWorkMapper {
+
+	@SelectProvider(TemplateFilePathProvider.class)
+	public List<Director> getDirectors();
 
 	@SelectProvider(TemplateFilePathProvider.class)
 	public List<DirectorWork> getWorkDetails(@Param("directorId") String directorId);

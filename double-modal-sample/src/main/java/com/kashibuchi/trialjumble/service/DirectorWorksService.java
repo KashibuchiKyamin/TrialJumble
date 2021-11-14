@@ -6,12 +6,14 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.kashibuchi.trialjumble.persistence.domain.Director;
 import com.kashibuchi.trialjumble.persistence.domain.DirectorWork;
 import com.kashibuchi.trialjumble.persistence.mapper.DirectorWorkMapper;
 import com.kashibuchi.trialjumble.web.model.DirectorWorks;
 import com.kashibuchi.trialjumble.web.model.DirectorWorks.DirectorWorksBuilder;
 import com.kashibuchi.trialjumble.web.model.DirectorWorks.Work;
 import com.kashibuchi.trialjumble.web.model.DirectorWorks.Work.WorkBuilder;
+import com.kashibuchi.trialjumble.web.model.Directors;
 
 import lombok.AllArgsConstructor;
 
@@ -20,6 +22,13 @@ import lombok.AllArgsConstructor;
 public class DirectorWorksService {
 
 	private DirectorWorkMapper directorWorkMapper;
+
+	public Directors getDirectors() {
+
+		List<Director> directors = directorWorkMapper.getDirectors();
+
+		return new Directors(directors);
+	}
 
 	public DirectorWorks getDirectorWorksDetail(String directorId) {
 
