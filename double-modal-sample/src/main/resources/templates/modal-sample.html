@@ -1,26 +1,69 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ガンダムの監督 - 富野由悠季</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ガンダムの監督 - 富野由悠季</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/modaal@0.4.4/dist/css/modaal.min.css">
 </head>
 <body>
-  <h1>富野由悠季</h1>
-  
-  <table>
-    <tbody>
-      <tr>
-        <td>
-          来歴
-        </td>
-        <td>
-          ガンダム作品リスト
-        </td>
-      </tr>
-    </tbody>
-  </table>
+	<h1>富野由悠季</h1>
 
+	<table>
+		<tbody>
+			<tr>
+				<td><a href="#overview" class="overview">概要</a>
+					<div id="overview" style="display: none;">
+						<p>ああああああああああああああああああああああああああ。</p>
+					</div></td>
+				<td><a href="#works" class="works">作品リスト</a>
+					<div id="works" style="display: none;">
+						<table>
+							<tbody>
+								<tr>
+									<th>作品名</th>
+									<th>放映・上映年</th>
+									<!-- <th>詳細</th> -->
+								</tr>
+								<tr>
+									<td>起動戦士ガンダム</td>
+									<td>XXXX年 - XXXX年</td>
+									<!--
+									モーダルの二重起動は今のところ知見なし
+									https://github.com/humaan/Modaal/issues/134
+									自作したほうが早そう
+									<td>
+									<a href="#detail" class="detail">→</a>
+									<div id="detail" style="display:none;">
+									<p>ああああああああああああああああああああああああああ。</p>
+									</div>
+									</td>
+									-->
+								</tr>
+								<tr>
+									<td>伝説巨人イデオン</td>
+									<td>XXXX年 - XXXX年</td>
+									<!-- <td>→</td> -->
+								</tr>
+							</tbody>
+						</table>
+					</div></td>
+			</tr>
+		</tbody>
+	</table>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/modaal@0.4.4/dist/js/modaal.min.js"></script>
+	<script>
+		$(function() {
+			$(".overview").modaal();
+		});
+		$(function() {
+			$(".works").modaal();
+		});
+	</script>
 </body>
 </html>

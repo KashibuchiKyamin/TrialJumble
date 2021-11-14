@@ -20,14 +20,12 @@
 			<tr th:each="director : *{directors}" th:object="${director}">
 				<td th:text="*{name}">富野由悠季</td>
 				<td th:text="*{birthDate}">XXXX-XX-XX</td>
-				<td th:text="*{overview}">あああああああああああああああああああああああああああああああああああ</td>
 				<td><a href="modal-sample.html" th:href="@{/directorWorks/} + *{directorId}" >詳細</a></td>
 			</tr>
 			<!--/*-->
 			<tr>
 				<td>荒木哲郎</td>
 				<td>XXXX-XX-XX</td>
-				<td>あああああああああああああああああああああああああああああああああああ</td>
 				<td><a href="modal-sample.html">詳細</a></td>
 			</tr>
 			<!--*/-->
