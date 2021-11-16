@@ -7,6 +7,65 @@
 <title>ガンダムの監督 - 富野由悠季</title>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/modaal@0.4.4/dist/css/modaal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
+<script type="text/javascript">
+	var works = [ {
+		workName : "起動戦士ガンダム",
+		workTypeJa : "テレビアニメ",
+		yearOfRelease : "1979年 - 1980年"
+	}, {
+		workName : "伝説巨神イデオン",
+		workTypeJa : "テレビアニメ",
+		yearOfRelease : "1980年 - 1981年"
+	}, {
+		workName : "機動戦士ガンダム",
+		workTypeJa : "劇場版作品",
+		yearOfRelease : "1981年"
+	}, {
+		workName : "機動戦士ガンダムII 哀・戦士編",
+		workTypeJa : "劇場版作品",
+		yearOfRelease : "1981年"
+	}, {
+		workName : "機動戦士ガンダムIII めぐりあい宇宙編",
+		workTypeJa : "劇場版作品",
+		yearOfRelease : "1982年"
+	}, {
+		workName : "戦闘メカ ザブングル",
+		workTypeJa : "テレビアニメ",
+		yearOfRelease : "1982年 - 1983年"
+	}, {
+		workName : "The IDEON(伝説巨神イデオン)接触篇/発動篇",
+		workTypeJa : "劇場版作品",
+		yearOfRelease : "1982年"
+	}, {
+		workName : "聖戦士ダンバイン",
+		workTypeJa : "テレビアニメ",
+		yearOfRelease : "1983年 - 1984年"
+	}, {
+		workName : "ザブングル グラフィティ",
+		workTypeJa : "劇場版作品",
+		yearOfRelease : "1983年"
+	}, {
+		workName : "重戦機エルガイム",
+		workTypeJa : "テレビアニメ",
+		yearOfRelease : "1984年 - 1985年"
+	}, {
+		workName : "機動戦士Ζガンダム",
+		workTypeJa : "テレビアニメ",
+		yearOfRelease : "1985年 - 1986年"
+	}, {
+		workName : "機動戦士ガンダムΖΖ",
+		workTypeJa : "テレビアニメ",
+		yearOfRelease : "1986年 - 1987年"
+	} ];
+
+	var result = _.orderBy(works, [ 'yearOfRelease' ], [ 'desc' ]);
+
+	console.log('result: ' + JSON.stringify(result));
+</script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="../static/js/pagination.min.js"></script>
 </head>
 <body>
 	<h1>富野由悠季</h1>
@@ -29,12 +88,13 @@
 									<!-- <th>詳細</th> -->
 								</tr>
 							</thead>
-							<tbody>
+							<tbody id="works-list">
+								<!--
 								<tr>
 									<td>起動戦士ガンダム</td>
 									<td>テレビアニメ</td>
-									<td>XXXX年 - XXXX年</td>
-									<!--
+									<td>XXXX年 - XXXX年</td> -->
+								<!--
 									モーダルの二重起動は今のところ知見なし
 									https://github.com/humaan/Modaal/issues/134
 									自作したほうが早そう
@@ -45,13 +105,16 @@
 									</div>
 									</td>
 									-->
+								<!--
 								</tr>
 								<tr>
 									<td>伝説巨人イデオン</td>
 									<td>劇場版</td>
-									<td>XXXX年 - XXXX年</td>
-									<!-- <td>→</td> -->
+									<td>XXXX年 - XXXX年</td> -->
+								<!-- <td>→</td> -->
+								<!--
 								</tr>
+								 -->
 							</tbody>
 						</table>
 					</div></td>
@@ -59,16 +122,39 @@
 		</tbody>
 	</table>
 	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	<script
 		src="https://cdn.jsdelivr.net/npm/modaal@0.4.4/dist/js/modaal.min.js"></script>
 	<script>
 		$(function() {
-			$(".overview").modaal();
+			$('.overview').modaal();
 		});
 		$(function() {
-			$(".works").modaal();
+			$('.works').modaal();
 		});
+	</script>
+	<script>
+		$(function() {
+			$('#works-list').pagination({ // works-listにページャーを埋め込む
+				dataSource : result,
+				pageSize : 5, // 1ページあたりの表示数
+				prevText : '&lt; 前へ',
+				nextText : '次へ &gt;',
+				// ページがめくられた時に呼ばれる
+				callback : function(data, pagination) {
+					// dataの中に次に表示すべきデータが入っているので、html要素に変換
+					$('#works-list').html(template(data)); // works-listにコンテンツを埋め込む
+				}
+			});
+		});
+		// [3] データ1つ1つをhtml要素に変換する
+		function template(dataArray) {
+			return dataArray.map(function(data) {
+				return '<tr>'
+						+ '<td>' + data.workName + '</td>'
+						+ '<td>' + data.workTypeJa + '</td>'
+						+ '<td>' + data.yearOfRelease + '</td>'
+						+ '</tr>'
+			})
+		}
 	</script>
 </body>
 </html>
