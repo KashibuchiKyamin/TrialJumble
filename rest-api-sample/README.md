@@ -6,9 +6,7 @@
 - Java 11
 - 以下を使用したサンプル
     - Mybatis Thymeleaf
-    - Modaal(未実装)※モーダルウィンドウ
-    - lodash(未実装)※配列のソート
-    - Pagination.js(未実装)※ページング
+
 
 ## 使い方
 
