@@ -10,13 +10,15 @@
 	<h1>監督一覧</h1>
 	<h2 th:text="*{count} + 件の登録があります。">n件の登録があります。</h2>
 	<table>
-		<tbody>
+		<thead>
 			<tr>
 				<th>名前</th>
 				<th>誕生日</th>
 				<th>概要</th>
 				<th>リンク</th>
 			</tr>
+		</thead>
+		<tbody>
 			<tr th:each="director : *{directors}" th:object="${director}">
 				<td th:text="*{name}">富野由悠季</td>
 				<td th:text="*{birthDate}">XXXX-XX-XX</td>
