@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ガンダムの監督 - 富野由悠季</title>
+</head>
+<body th:object="${directorWorks}">
+	<h1 th:text="*{name}">富野由悠季</h1>
+
+	<h2>概要</h2>
+	<p th:text="*{overview}">ああああああああああああああああああああああああああ</p>
+
+	<table>
+		<thead>
+			<tr>
+				<th>作品名</th>
+				<th>作品種別</th>
+				<th>放映・上映年</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="work : *{works}" th:object="${work}">
+				<td th:text="*{workName}">起動戦士ガンダム</td>
+				<td th:text="*{workTypeJa}">テレビアニメ</td>
+				<td th:text="*{yearOfRelease}">XXXX年 - XXXX年</td>
+			</tr>
+			<!--/*-->
+			<tr>
+				<td>伝説巨人イデオン</td>
+				<td>劇場版</td>
+				<td>XXXX年 - XXXX年</td>
+			</tr>
+			<!--*/-->
+		</tbody>
+	</table>
+</body>
+</html>
