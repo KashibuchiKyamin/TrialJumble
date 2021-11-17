@@ -1,8 +1,10 @@
 package com.kashibuchi.trialjumble.persistence.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
+@AllArgsConstructor
 public class DirectorWork {
 	/*
 	 d.name
