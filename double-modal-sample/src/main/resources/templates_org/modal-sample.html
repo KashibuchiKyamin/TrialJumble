@@ -121,6 +121,20 @@
 			</tr>
 		</tbody>
 	</table>
+	<div>
+		<table>
+			<thead>
+				<tr>
+					<th>作品名</th>
+					<th>作品種別</th>
+					<th>放映・上映年</th>
+					<!-- <th>詳細</th> -->
+				</tr>
+			</thead>
+			<tbody id="works-list-second">
+			</tbody>
+		</table>
+	</div>
 	<script
 		src="https://cdn.jsdelivr.net/npm/modaal@0.4.4/dist/js/modaal.min.js"></script>
 	<script>
@@ -128,7 +142,9 @@
 			$('.overview').modaal();
 		});
 		$(function() {
-			$('.works').modaal();
+			$('.works').modaal({
+				height : 800
+			});
 		});
 	</script>
 	<script>
@@ -145,14 +161,24 @@
 				}
 			});
 		});
-		// [3] データ1つ1つをhtml要素に変換する
+		$(function() {
+			$('#works-list-second').pagination({ // works-listにページャーを埋め込む
+				dataSource : works,
+				pageSize : 5, // 1ページあたりの表示数
+				prevText : '&lt; 前へ',
+				nextText : '次へ &gt;',
+				// ページがめくられた時に呼ばれる
+				callback : function(data, pagination) {
+					// dataの中に次に表示すべきデータが入っているので、html要素に変換
+					$('#works-list').html(template(data)); // works-listにコンテンツを埋め込む
+				}
+			});
+		});
 		function template(dataArray) {
 			return dataArray.map(function(data) {
-				return '<tr>'
-						+ '<td>' + data.workName + '</td>'
-						+ '<td>' + data.workTypeJa + '</td>'
-						+ '<td>' + data.yearOfRelease + '</td>'
-						+ '</tr>'
+				return '<tr>' + '<td>' + data.workName + '</td>' + '<td>'
+						+ data.workTypeJa + '</td>' + '<td>'
+						+ data.yearOfRelease + '</td>' + '</tr>'
 			})
 		}
 	</script>
