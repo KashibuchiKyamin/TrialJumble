@@ -44,7 +44,7 @@ public class DirectorController {
 
 		LOGGER.debug("response: {}", response);
 
-		mv.setViewName("modal-sample");
+		mv.setViewName("list-js");
 		mv.addObject("directorWorks", response);
 		return mv;
 	}
