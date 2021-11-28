@@ -1,23 +1,28 @@
+.works{
+  width: 1072px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+}
+
+.works-table{
+  width: 1072px;
+  table-layout: fixed;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .sort-button{
   outline: none;
   border: none;
   background: transparent;
 }
 
-
-.works-table{
-  width: 1072px;
-  table-layout: fixed;
-}
-
-.works{
-  margin-bottom: 30px;
-}
-
 table, td, th {
   border-collapse: collapse;
   border: 1px #000000 solid;
 }
+
 thead {
   background-color: lightskyblue;
 }
@@ -39,6 +44,10 @@ thead {
 
 li{
   list-style: none;
+}
+
+li.active{
+  font-weight: bold;
 }
 
 ul li{

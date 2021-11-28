@@ -7,11 +7,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>List.jsを使用したテーブルのサンプル</title>
 <link rel="stylesheet" href="../static/css/list-js.css">
+
 </head>
 
 <body>
-	<h1>富野由悠季作品一覧</h1>
 	<div id="works" class="works">
+		<h1>富野由悠季作品一覧</h1>
 		<table class="works-table">
 			<thead>
 				<tr>
@@ -39,13 +40,6 @@
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js"></script>
 	<script>
-		var options = {
-			valueNames : [ 'workName', 'workTypeJa', 'yearOfRelease' ],
-			item : '<tr><td class="workName"></td><td class="workTypeJa"></td><td class="yearOfRelease"></td></tr>',
-			page : 5,
-			pagination : true,
-			innerWindow : 2,
-		};
 		var works = [ {
 			workName : "起動戦士ガンダム",
 			workTypeJa : "テレビアニメ",
@@ -95,9 +89,8 @@
 			workTypeJa : "テレビアニメ",
 			yearOfRelease : "1986年 - 1987年"
 		} ];
-
-		var userList = new List('works', options, works);
 	</script>
+	<script src="../static/js/list-js.js"></script>
 </body>
 
 </html>

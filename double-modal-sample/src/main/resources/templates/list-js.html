@@ -11,8 +11,8 @@
 </head>
 
 <body th:object="${directorWorks}">
-	<h1 th:text="*{name} + 作品一覧">富野由悠季作品一覧</h1>
 	<div id="works" class="works">
+		<h1 th:text="*{name} + 作品一覧">富野由悠季作品一覧</h1>
 		<table class="works-table">
 			<thead>
 				<tr>
@@ -41,7 +41,7 @@
 		src="https://cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js"></script>
 	<script th:inline="javascript">
 		/*<![CDATA[*/
-		var works = /*[[*{works}]]*/ [ {
+		var works = /*[[*{works}]]*/[ {
 			workName : "起動戦士ガンダム",
 			workTypeJa : "テレビアニメ",
 			yearOfRelease : "1979年 - 1980年"
