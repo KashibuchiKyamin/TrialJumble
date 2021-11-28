@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>List.jsを使用したテーブルのサンプル</title>
+  <link rel="stylesheet" href="../static/css/list-js.css">
+</head>
+
+<body>
+  <div id="works" class="works">
+    <table class="works-table">
+      <thead>
+        <tr>
+          <th class="workName">
+            <button class="sort sort-button" data-sort="workName">
+              作品名
+            </button>
+          </th>
+          <th class="workTypeJa">
+            <button class="sort sort-button " data-sort="workTypeJa">
+              作品種別
+            </button>
+          </th>
+          <th class="yearOfRelease">
+            <button class="sort sort-button" data-sort="yearOfRelease">
+              放送・上映年
+            </button>
+          </th>
+        </tr>
+      </thead>
+      <!-- 重要ポイント class="list" をtbodyに指定 -->
+      <tbody class="list">
+      </tbody>
+    </table>
+    <ul class="pagination"></ul>
+  </div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js"></script>
+  <script>
+    var options = {
+      valueNames: ['workName', 'workTypeJa', 'yearOfRelease'],
+      item: '<tr><td class="workName"></td><td class="workTypeJa"></td><td class="yearOfRelease"></td></tr>',
+      page: 2,
+      pagination: true,
+      innerWindow: 2,
+    };
+    var works = [{
+      workName: "起動戦士ガンダム",
+      workTypeJa: "テレビアニメ",
+      yearOfRelease: "1979年 - 1980年"
+    }, {
+      workName: "伝説巨神イデオン",
+      workTypeJa: "テレビアニメ",
+      yearOfRelease: "1980年 - 1981年"
+    }, {
+      workName: "機動戦士ガンダム",
+      workTypeJa: "劇場版作品",
+      yearOfRelease: "1981年"
+    }, {
+      workName: "機動戦士ガンダムII 哀・戦士編",
+      workTypeJa: "劇場版作品",
+      yearOfRelease: "1981年"
+    }, {
+      workName: "機動戦士ガンダムIII めぐりあい宇宙編",
+      workTypeJa: "劇場版作品",
+      yearOfRelease: "1982年"
+    }, {
+      workName: "戦闘メカ ザブングル",
+      workTypeJa: "テレビアニメ",
+      yearOfRelease: "1982年 - 1983年"
+    }, {
+      workName: "The IDEON(伝説巨神イデオン)接触篇/発動篇",
+      workTypeJa: "劇場版作品",
+      yearOfRelease: "1982年"
+    }, {
+      workName: "聖戦士ダンバイン",
+      workTypeJa: "テレビアニメ",
+      yearOfRelease: "1983年 - 1984年"
+    }, {
+      workName: "ザブングル グラフィティ",
+      workTypeJa: "劇場版作品",
+      yearOfRelease: "1983年"
+    }, {
+      workName: "重戦機エルガイム",
+      workTypeJa: "テレビアニメ",
+      yearOfRelease: "1984年 - 1985年"
+    }, {
+      workName: "機動戦士Ζガンダム",
+      workTypeJa: "テレビアニメ",
+      yearOfRelease: "1985年 - 1986年"
+    }, {
+      workName: "機動戦士ガンダムΖΖ",
+      workTypeJa: "テレビアニメ",
+      yearOfRelease: "1986年 - 1987年"
+    }];
+
+    var userList = new List('works', options, works);
+  </script>
+</body>
+
+</html>

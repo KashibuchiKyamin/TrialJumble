@@ -1,0 +1,51 @@
+.sort-button{
+  outline: none;
+  border: none;
+  background: transparent;
+}
+
+
+.works-table{
+  width: 1072px;
+  table-layout: fixed;
+}
+
+.works{
+  margin-bottom: 30px;
+}
+
+table, td, th {
+  border-collapse: collapse;
+  border: 1px #000000 solid;
+}
+thead {
+  background-color: lightskyblue;
+}
+
+.sort:after{
+  content: "◆";
+  text-decoration: line-through 2px solid lightskyblue;
+}
+
+.sort.asc:after{
+  content: "▲";
+  text-decoration: none;
+}
+
+.sort.desc:after{
+  content: "▼";
+  text-decoration: none;
+}
+
+li{
+  list-style: none;
+}
+
+ul li{
+  display: inline-block;
+  width: 60px;
+}
+
+ul.pagination{
+  text-align: center;
+}
