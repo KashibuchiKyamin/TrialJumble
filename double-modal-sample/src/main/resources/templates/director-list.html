@@ -1,40 +1,46 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>監督一覧</title>
+<link rel="stylesheet" href="../static/css/director-list.css"
+	th:href="@{/css/list-js.css}">
 </head>
+
 <body th:object="${directors}" >
-	<h1>監督一覧</h1>
-	<h2 th:text="*{count} + 件の登録があります。">n件の登録があります。</h2>
-	<table>
-		<thead>
-			<tr>
-				<th>名前</th>
-				<th>誕生日</th>
-				<th>概要</th>
-				<th>リンク</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr th:each="director : *{directors}" th:object="${director}">
-				<td th:text="*{name}">富野由悠季</td>
-				<td th:text="*{birthDate}">XXXX-XX-XX</td>
-				<td th:text="*{overview}">あああああああああああああああああああああああああああああああああああ</td>
-				<td><a href="modal-sample.html" th:href="@{/directorWorks/} + *{directorId}" >詳細</a></td>
-			</tr>
-			<!--/*-->
-			<tr>
-				<td>荒木哲郎</td>
-				<td>XXXX-XX-XX</td>
-				<td>あああああああああああああああああああああああああああああああああああ</td>
-				<td><a href="modal-sample.html">詳細</a></td>
-			</tr>
-			<!--*/-->
-		</tbody>
-	</table>
+	<div class="directors">
+		<h1>監督一覧</h1>
+		<h2 th:text="*{count} + 件の登録があります。">n件の登録があります。</h2>
+		<table class="directors-table">
+			<thead>
+				<tr>
+					<th class="name">名前</th>
+					<th class="birth-date">誕生日</th>
+					<th class="overview">概要</th>
+					<th class="link">リンク</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="director : *{directors}" th:object="${director}">
+					<td th:text="*{name}">富野由悠季</td>
+					<td th:text="*{birthDate}">XXXX-XX-XX</td>
+					<td th:text="*{overview}">あああああああああああああああああああああああああああああああああああ</td>
+					<td><a href="modal-sample.html" th:href="@{/directorWorks/} + *{directorId}" >詳細</a></td>
+				</tr>
+				<!--/*-->
+				<tr>
+					<td>荒木哲郎</td>
+					<td>XXXX-XX-XX</td>
+					<td>あああああああああああああああああああああああああああああああああああ</td>
+					<td><a href="modal-sample.html">詳細</a></td>
+				</tr>
+				<!--*/-->
+			</tbody>
+		</table>	
+	</div>
 
 </body>
 </html>

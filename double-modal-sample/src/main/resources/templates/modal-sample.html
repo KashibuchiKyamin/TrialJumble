@@ -5,70 +5,138 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ガンダムの監督 - 富野由悠季</title>
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/modaal@0.4.4/dist/css/modaal.min.css">
+<link rel="stylesheet" href="../static/css/modal-sample.css"
+	th:href="@{/css/modal-sample.css}">
+<link rel="stylesheet" href="../static/css/micromodal.css">
 </head>
 <body>
-	<h1>富野由悠季</h1>
+	<div class="director-detail">
+		<h1>富野由悠季</h1>
+		<table class="profile">
+			<tbody>
+				<tr>
+					<td><a href="#" class="overview"
+						data-micromodal-trigger="overview">概要</a></td>
+					<td><a href="#" class="works" data-micromodal-trigger="works">作品リスト</a></td>
+				</tr>
+			</tbody>
+		</table>
 
-	<table>
-		<tbody>
-			<tr>
-				<td><a href="#overview" class="overview">概要</a>
-					<div id="overview" style="display: none;">
-						<p>ああああああああああああああああああああああああああ。</p>
-					</div></td>
-				<td><a href="#works" class="works">作品リスト</a>
-					<div id="works" style="display: none;">
-						<table>
-							<thead>
-								<tr>
-									<th>作品名</th>
-									<th>作品種別</th>
-									<th>放映・上映年</th>
-									<!-- <th>詳細</th> -->
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>起動戦士ガンダム</td>
-									<td>テレビアニメ</td>
-									<td>XXXX年 - XXXX年</td>
-									<!--
-									モーダルの二重起動は今のところ知見なし
-									https://github.com/humaan/Modaal/issues/134
-									自作したほうが早そう
-									<td>
-									<a href="#detail" class="detail">→</a>
-									<div id="detail" style="display:none;">
-									<p>ああああああああああああああああああああああああああ。</p>
-									</div>
-									</td>
-									-->
-								</tr>
-								<tr>
-									<td>伝説巨人イデオン</td>
-									<td>劇場版</td>
-									<td>XXXX年 - XXXX年</td>
-									<!-- <td>→</td> -->
-								</tr>
-							</tbody>
-						</table>
-					</div></td>
-			</tr>
-		</tbody>
-	</table>
+		<!-- ここからモーダルエリアです。 -->
+		<div id="overview" aria-hidden="true" class="micromodal-slide modal">
+			<div class="modal__overlay" tabindex="-1" data-micromodal-close>
+				<div class="overview_container" role="dialog" aria-modal="true"
+					aria-labelledby="overview-title">
+					<header class="modal__header">
+						<h2 id="overview-title" class="modal__title">概要</h2>
+						<button class="modal__close" aria-label="Close modal"
+							data-micromodal-close></button>
+					</header>
+					<div id="overview-content" class="overview_content">内容テキスト</div>
+					<footer class="modal__footer"></footer>
+				</div>
+			</div>
+		</div>
+
+		<div id="works" aria-hidden="true" class="micromodal-slide modal">
+			<div class="modal__overlay" tabindex="-1" data-micromodal-close>
+				<div class="works_container" role="dialog" aria-modal="true"
+					aria-labelledby="works-title">
+					<header class="modal__header">
+						<h2 id="works-title" class="modal__title">作品リスト</h2>
+						<button class="modal__close" aria-label="Close modal"
+							data-micromodal-close></button>
+					</header>
+					<div id="works-content" class="modal__content">
+						<div id="works">
+							<table class="works-table">
+								<thead>
+									<tr>
+										<th class="workName">
+											<button class="sort sort-button" data-sort="workName">
+												作品名</button>
+										</th>
+										<th class="workTypeJa">
+											<button class="sort sort-button " data-sort="workTypeJa">
+												作品種別</button>
+										</th>
+										<th class="yearOfRelease">
+											<button class="sort sort-button" data-sort="yearOfRelease">
+												放送・上映年</button>
+										</th>
+									</tr>
+								</thead>
+								<!-- 重要ポイント class="list" をtbodyに指定 -->
+								<tbody class="list">
+								</tbody>
+							</table>
+							<ul class="pagination"></ul>
+						</div>
+					</div>
+					<footer class="modal__footer"></footer>
+				</div>
+			</div>
+		</div>
+
+	</div>
 	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/modaal@0.4.4/dist/js/modaal.min.js"></script>
+		src="https://cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js"></script>
+	<script th:inline="javascript">
+		var works = /*[[*{works}]]*/[ {
+			workName : "起動戦士ガンダム",
+			workTypeJa : "テレビアニメ",
+			yearOfRelease : "1979年 - 1980年"
+		}, {
+			workName : "伝説巨神イデオン",
+			workTypeJa : "テレビアニメ",
+			yearOfRelease : "1980年 - 1981年"
+		}, {
+			workName : "機動戦士ガンダム",
+			workTypeJa : "劇場版作品",
+			yearOfRelease : "1981年"
+		}, {
+			workName : "機動戦士ガンダムII 哀・戦士編",
+			workTypeJa : "劇場版作品",
+			yearOfRelease : "1981年"
+		}, {
+			workName : "機動戦士ガンダムIII めぐりあい宇宙編",
+			workTypeJa : "劇場版作品",
+			yearOfRelease : "1982年"
+		}, {
+			workName : "戦闘メカ ザブングル",
+			workTypeJa : "テレビアニメ",
+			yearOfRelease : "1982年 - 1983年"
+		}, {
+			workName : "The IDEON(伝説巨神イデオン)接触篇/発動篇",
+			workTypeJa : "劇場版作品",
+			yearOfRelease : "1982年"
+		}, {
+			workName : "聖戦士ダンバイン",
+			workTypeJa : "テレビアニメ",
+			yearOfRelease : "1983年 - 1984年"
+		}, {
+			workName : "ザブングル グラフィティ",
+			workTypeJa : "劇場版作品",
+			yearOfRelease : "1983年"
+		}, {
+			workName : "重戦機エルガイム",
+			workTypeJa : "テレビアニメ",
+			yearOfRelease : "1984年 - 1985年"
+		}, {
+			workName : "機動戦士Ζガンダム",
+			workTypeJa : "テレビアニメ",
+			yearOfRelease : "1985年 - 1986年"
+		}, {
+			workName : "機動戦士ガンダムΖΖ",
+			workTypeJa : "テレビアニメ",
+			yearOfRelease : "1986年 - 1987年"
+		} ];
+	</script>
+	<script src="../static/js/list-js.js" th:src="@{/js/list-js.js}"></script>
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+	<script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
 	<script>
-		$(function() {
-			$(".overview").modaal();
-		});
-		$(function() {
-			$(".works").modaal();
-		});
+		MicroModal.init();
 	</script>
 </body>
 </html>
