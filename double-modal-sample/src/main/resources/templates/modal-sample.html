@@ -23,21 +23,6 @@
 		</table>
 
 		<!-- ここからモーダルエリアです。 -->
-		<div id="overview" aria-hidden="true" class="micromodal-slide modal">
-			<div class="modal__overlay" tabindex="-1" data-micromodal-close>
-				<div class="overview_container" role="dialog" aria-modal="true"
-					aria-labelledby="overview-title">
-					<header class="modal__header">
-						<h2 id="overview-title" class="modal__title">概要</h2>
-						<button class="modal__close" aria-label="Close modal"
-							data-micromodal-close></button>
-					</header>
-					<div id="overview-content" class="overview_content">内容テキスト</div>
-					<footer class="modal__footer"></footer>
-				</div>
-			</div>
-		</div>
-
 		<div id="works" aria-hidden="true" class="micromodal-slide modal">
 			<div class="modal__overlay" tabindex="-1" data-micromodal-close>
 				<div class="works_container" role="dialog" aria-modal="true"
@@ -73,11 +58,41 @@
 							<ul class="pagination"></ul>
 						</div>
 					</div>
-					<footer class="modal__footer"></footer>
 				</div>
 			</div>
 		</div>
 
+
+	</div>
+	<div>
+		<!-- ボタンエリアです。 -->
+		<button class="modal__btn" data-micromodal-trigger="modal-1"
+			role="button">micromodal</button>
+		<!-- ここからモーダルエリアです。 -->
+		<div id="modal-1" aria-hidden="true" class="micromodal-slide modal">
+			<div class="modal__overlay" tabindex="-1" data-micromodal-close>
+				<div class="modal__container" role="dialog" aria-modal="true"
+					aria-labelledby="modal-1-title">
+					<header class="modal__header">
+						<h2 id="modal-1-title" class="modal__title">ヘッダータイトル</h2>
+						<button class="modal__close" aria-label="Close modal"
+							data-micromodal-close></button>
+					</header>
+					<div id="modal-1-content" class="modal__content">内容テキスト</div>
+					<footer class="modal__footer"></footer>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<button onclick="sample()">押してね1</button>
+	<button onclick="openDiv('押したよ')">押してね2</button>
+	<div id="modal-sample" aria-hidden="true" class="micromodal-slide modal">
+		<div class="modal__overlay" tabindex="-1" data-micromodal-close>
+			<div class="modal__container" role="dialog" aria-modal="true">
+				<h1 id="target">でたー</h1>
+			</div>
+		</div>
 	</div>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js"></script>
@@ -138,5 +153,20 @@
 	<script>
 		MicroModal.init();
 	</script>
+	<script type="text/javascript">
+		function sample() {
+			console.log('呼ばれた！');
+		}
+		function openDiv(word) {
+			var target = document.getElementById('target');
+			console.log(target);
+			target.innerHTML = word.yearOfRelease;
+			MicroModal.show('modal-sample', {
+				onShow: modal => console.info(`${modal.id} is shown`)
+			});
+		}
+	</script>
+
+
 </body>
 </html>
