@@ -9,7 +9,8 @@ var options = {
 		return `<tr>
 				<td>${values.workName}</td>
 				<td>${values.workTypeJa}</td>
-				<td>${values.yearOfRelease}<button onclick="openDiv('${values}')">押してね</button></td>
+				<td>${values.yearOfRelease}</td>
+				<td><button onclick="openDiv('詳細情報')">詳細</button></td>
 				</tr>`;
 	},
 

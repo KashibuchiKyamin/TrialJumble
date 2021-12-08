@@ -5,181 +5,144 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ガンダムの監督 - 富野由悠季</title>
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/modaal@0.4.4/dist/css/modaal.min.css">
-<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
-<script type="text/javascript">
-	var works = [ {
-		workName : "起動戦士ガンダム",
-		workTypeJa : "テレビアニメ",
-		yearOfRelease : "1979年 - 1980年"
-	}, {
-		workName : "伝説巨神イデオン",
-		workTypeJa : "テレビアニメ",
-		yearOfRelease : "1980年 - 1981年"
-	}, {
-		workName : "機動戦士ガンダム",
-		workTypeJa : "劇場版作品",
-		yearOfRelease : "1981年"
-	}, {
-		workName : "機動戦士ガンダムII 哀・戦士編",
-		workTypeJa : "劇場版作品",
-		yearOfRelease : "1981年"
-	}, {
-		workName : "機動戦士ガンダムIII めぐりあい宇宙編",
-		workTypeJa : "劇場版作品",
-		yearOfRelease : "1982年"
-	}, {
-		workName : "戦闘メカ ザブングル",
-		workTypeJa : "テレビアニメ",
-		yearOfRelease : "1982年 - 1983年"
-	}, {
-		workName : "The IDEON(伝説巨神イデオン)接触篇/発動篇",
-		workTypeJa : "劇場版作品",
-		yearOfRelease : "1982年"
-	}, {
-		workName : "聖戦士ダンバイン",
-		workTypeJa : "テレビアニメ",
-		yearOfRelease : "1983年 - 1984年"
-	}, {
-		workName : "ザブングル グラフィティ",
-		workTypeJa : "劇場版作品",
-		yearOfRelease : "1983年"
-	}, {
-		workName : "重戦機エルガイム",
-		workTypeJa : "テレビアニメ",
-		yearOfRelease : "1984年 - 1985年"
-	}, {
-		workName : "機動戦士Ζガンダム",
-		workTypeJa : "テレビアニメ",
-		yearOfRelease : "1985年 - 1986年"
-	}, {
-		workName : "機動戦士ガンダムΖΖ",
-		workTypeJa : "テレビアニメ",
-		yearOfRelease : "1986年 - 1987年"
-	} ];
-
-	var result = _.orderBy(works, [ 'yearOfRelease' ], [ 'desc' ]);
-
-	console.log('result: ' + JSON.stringify(result));
-</script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="../static/js/pagination.min.js"></script>
+<link rel="stylesheet" href="../static/css/modal-sample.css">
+<link rel="stylesheet" href="../static/css/micromodal.css">
 </head>
 <body>
-	<h1>富野由悠季</h1>
-
-	<table>
-		<tbody>
-			<tr>
-				<td><a href="#overview" class="overview">概要</a>
-					<div id="overview" style="display: none;">
-						<p>ああああああああああああああああああああああああああ。</p>
-					</div></td>
-				<td><a href="#works" class="works">作品リスト</a>
-					<div id="works">
-						<table>
-							<thead>
-								<tr>
-									<th>作品名</th>
-									<th>作品種別</th>
-									<th>放映・上映年</th>
-									<!-- <th>詳細</th> -->
-								</tr>
-							</thead>
-							<tbody id="works-list">
-								<!--
-								<tr>
-									<td>起動戦士ガンダム</td>
-									<td>テレビアニメ</td>
-									<td>XXXX年 - XXXX年</td> -->
-								<!--
-									モーダルの二重起動は今のところ知見なし
-									https://github.com/humaan/Modaal/issues/134
-									自作したほうが早そう
-									<td>
-									<a href="#detail" class="detail">→</a>
-									<div id="detail" style="display:none;">
-									<p>ああああああああああああああああああああああああああ。</p>
-									</div>
-									</td>
-									-->
-								<!--
-								</tr>
-								<tr>
-									<td>伝説巨人イデオン</td>
-									<td>劇場版</td>
-									<td>XXXX年 - XXXX年</td> -->
-								<!-- <td>→</td> -->
-								<!--
-								</tr>
-								 -->
-							</tbody>
-						</table>
-					</div></td>
-			</tr>
-		</tbody>
-	</table>
-	<div>
-		<table>
-			<thead>
+	<div class="director-detail">
+		<h1>富野由悠季</h1>
+		<table class="profile">
+			<tbody>
 				<tr>
-					<th>作品名</th>
-					<th>作品種別</th>
-					<th>放映・上映年</th>
-					<!-- <th>詳細</th> -->
+					<td><a href="#" class="overview"
+						data-micromodal-trigger="overview">概要</a></td>
+					<td><a href="#" class="works" data-micromodal-trigger="works">作品リスト</a></td>
 				</tr>
-			</thead>
-			<tbody id="works-list-second">
 			</tbody>
 		</table>
+
+		<!-- ここからモーダルエリアです。 -->
+		<div id="works" aria-hidden="true" class="micromodal-slide modal">
+			<div class="modal__overlay" tabindex="-1" data-micromodal-close>
+				<div class="works_container" role="dialog" aria-modal="true"
+					aria-labelledby="works-title">
+					<header class="modal__header">
+						<h2 id="works-title" class="modal__title">作品リスト</h2>
+						<button class="modal__close" aria-label="Close modal"
+							data-micromodal-close></button>
+					</header>
+					<div id="works-content" class="modal__content">
+						<div id="works">
+							<table class="works-table">
+								<thead>
+									<tr>
+										<th class="workName">
+											<button class="sort sort-button" data-sort="workName">
+												作品名</button>
+										</th>
+										<th class="workTypeJa">
+											<button class="sort sort-button " data-sort="workTypeJa">
+												作品種別</button>
+										</th>
+										<th class="yearOfRelease">
+											<button class="sort sort-button" data-sort="yearOfRelease">
+												放送・上映年</button>
+										</th>
+										<th class="link">詳細</th>
+									</tr>
+								</thead>
+								<!-- 重要ポイント class="list" をtbodyに指定 -->
+								<tbody class="list">
+								</tbody>
+							</table>
+							<ul class="pagination"></ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+
+	<div id="modal-sample" aria-hidden="true"
+		class="micromodal-slide modal">
+		<div class="modal__overlay" tabindex="-1" data-micromodal-close>
+			<div class="modal__container" role="dialog" aria-modal="true">
+				<h1 id="target">でたー</h1>
+			</div>
+		</div>
 	</div>
 	<script
-		src="https://cdn.jsdelivr.net/npm/modaal@0.4.4/dist/js/modaal.min.js"></script>
+		src="https://cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js"></script>
 	<script>
-		$(function() {
-			$('.overview').modaal();
-		});
-		$(function() {
-			$('.works').modaal({
-				height : 800
-			});
-		});
+		var works = [ {
+			workName : "起動戦士ガンダム",
+			workTypeJa : "テレビアニメ",
+			yearOfRelease : "1979年 - 1980年"
+		}, {
+			workName : "伝説巨神イデオン",
+			workTypeJa : "テレビアニメ",
+			yearOfRelease : "1980年 - 1981年"
+		}, {
+			workName : "機動戦士ガンダム",
+			workTypeJa : "劇場版作品",
+			yearOfRelease : "1981年"
+		}, {
+			workName : "機動戦士ガンダムII 哀・戦士編",
+			workTypeJa : "劇場版作品",
+			yearOfRelease : "1981年"
+		}, {
+			workName : "機動戦士ガンダムIII めぐりあい宇宙編",
+			workTypeJa : "劇場版作品",
+			yearOfRelease : "1982年"
+		}, {
+			workName : "戦闘メカ ザブングル",
+			workTypeJa : "テレビアニメ",
+			yearOfRelease : "1982年 - 1983年"
+		}, {
+			workName : "The IDEON(伝説巨神イデオン)接触篇/発動篇",
+			workTypeJa : "劇場版作品",
+			yearOfRelease : "1982年"
+		}, {
+			workName : "聖戦士ダンバイン",
+			workTypeJa : "テレビアニメ",
+			yearOfRelease : "1983年 - 1984年"
+		}, {
+			workName : "ザブングル グラフィティ",
+			workTypeJa : "劇場版作品",
+			yearOfRelease : "1983年"
+		}, {
+			workName : "重戦機エルガイム",
+			workTypeJa : "テレビアニメ",
+			yearOfRelease : "1984年 - 1985年"
+		}, {
+			workName : "機動戦士Ζガンダム",
+			workTypeJa : "テレビアニメ",
+			yearOfRelease : "1985年 - 1986年"
+		}, {
+			workName : "機動戦士ガンダムΖΖ",
+			workTypeJa : "テレビアニメ",
+			yearOfRelease : "1986年 - 1987年"
+		} ];
 	</script>
+	<script src="../static/js/list-js.js"></script>
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+	<script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
 	<script>
-		$(function() {
-			$('#works-list').pagination({ // works-listにページャーを埋め込む
-				dataSource : result,
-				pageSize : 5, // 1ページあたりの表示数
-				prevText : '&lt; 前へ',
-				nextText : '次へ &gt;',
-				// ページがめくられた時に呼ばれる
-				callback : function(data, pagination) {
-					// dataの中に次に表示すべきデータが入っているので、html要素に変換
-					$('#works-list').html(template(data)); // works-listにコンテンツを埋め込む
-				}
+		MicroModal.init();
+	</script>
+	<script type="text/javascript">
+		function sample() {
+			console.log('呼ばれた！');
+		}
+		function openDiv(word) {
+			var target = document.getElementById('target');
+			console.log(target);
+			target.innerHTML = word;
+			MicroModal.show('modal-sample', {
+				onShow: modal => console.info(`${modal.id} is shown`)
 			});
-		});
-		$(function() {
-			$('#works-list-second').pagination({ // works-listにページャーを埋め込む
-				dataSource : works,
-				pageSize : 5, // 1ページあたりの表示数
-				prevText : '&lt; 前へ',
-				nextText : '次へ &gt;',
-				// ページがめくられた時に呼ばれる
-				callback : function(data, pagination) {
-					// dataの中に次に表示すべきデータが入っているので、html要素に変換
-					$('#works-list').html(template(data)); // works-listにコンテンツを埋め込む
-				}
-			});
-		});
-		function template(dataArray) {
-			return dataArray.map(function(data) {
-				return '<tr>' + '<td>' + data.workName + '</td>' + '<td>'
-						+ data.workTypeJa + '</td>' + '<td>'
-						+ data.yearOfRelease + '</td>' + '</tr>'
-			})
 		}
 	</script>
 </body>
